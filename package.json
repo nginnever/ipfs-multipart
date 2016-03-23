@@ -3,9 +3,15 @@
   "version": "0.1.0",
   "description": "A set of utilities to help dealing with IPFS multipart.",
   "main": "lib/index.js",
+  "jsnext:main": "src/index.js",
   "scripts": {
-    "test": "mocha test/index.js",
-    "lint": "standard --verbose | snazzy"
+    "lint": "dignified-lint",
+    "test": "dignified-test",
+    "test:node": "dignified-test node",
+    "test:browser": "dignified-test browser",
+    "build": "dignified-build",
+    "release": "dignified-release",
+    "coverage": "istanbul cover --print both -- _mocha tests/test.js"
   },
   "pre-commit": [
     "test",
@@ -28,6 +34,7 @@
   "homepage": "https://github.com/xicombd/ipfs-multipart#readme",
   "devDependencies": {
     "chai": "^3.5.0",
+    "dignified.js": "github:dignifiedquire/dignified.js",
     "ipfs-api": "github:ipfs/js-ipfs-api#1fd9749",
     "mocha": "^2.4.5",
     "pre-commit": "^1.1.2",

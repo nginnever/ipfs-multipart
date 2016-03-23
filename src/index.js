@@ -1,3 +1,6 @@
+/* eslint-env mocha */
+'use strict'
+
 const content = require('content')
 const Parser = require('./parser')
 

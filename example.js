@@ -1,3 +1,5 @@
+/* eslint-env mocha */
+'use strict'
 const http = require('http')
 const IPFSMultipart = require('.')
 
@@ -6,19 +8,19 @@ http.createServer((req, res) => {
     const parser = IPFSMultipart.reqParser(req)
 
     parser.on('file', (fileName, fileStream) => {
-      console.log(`file ${fileName} start`)
+      // console.log(`file ${fileName} start`)
 
       fileStream.on('data', (data) => {
-        console.log(`file ${fileName} contents:`, data.toString())
+        // console.log(`file ${fileName} contents:`, data.toString())
       })
 
       fileStream.on('end', (data) => {
-        console.log(`file ${fileName} end`)
+        // console.log(`file ${fileName} end`)
       })
     })
 
     parser.on('end', () => {
-      console.log('finished parsing')
+      // console.log('finished parsing')
       res.writeHead(200)
       res.end()
     })
@@ -29,5 +31,5 @@ http.createServer((req, res) => {
   res.writeHead(404)
   res.end()
 }).listen(5001, () => {
-  console.log('server listening on port 5001')
+  // console.log('server listening on port 5001')
 })
